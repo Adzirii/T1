@@ -1,0 +1,33 @@
+Task-1/HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!Task-1/supplier/src/main/**/target/
+!Task-1/supplier/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!Task-1/supplier/src/main/**/build/
+!Task-1/supplier/src/test/**/build/
+
+### VS Code ###
+.vscode/

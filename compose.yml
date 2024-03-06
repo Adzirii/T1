@@ -1,0 +1,16 @@
+services:
+  postgres:
+    container_name: postgres_consumer
+    image: postgres
+    environment:
+      POSTGRES_DB: task-1-db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - t1:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+
+volumes:
+  t1:

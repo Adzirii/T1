@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/task-1-db
+    username: user
+    password: pass
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+

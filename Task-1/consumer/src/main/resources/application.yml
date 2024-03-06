@@ -1,0 +1,5 @@
+server:
+  port: 8081
+
+supplier:
+  url: "http://localhost:8080/api/v1/"
