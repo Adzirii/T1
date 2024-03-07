@@ -1,6 +1,6 @@
-Task-1/HELP.md
+Task-1/supplier/HELP.md
 target/
-!.mvn/wrapper/maven-wrapper.jar
+!Task-1/supplier/.mvn/wrapper/maven-wrapper.jar
 !Task-1/supplier/src/main/**/target/
 !Task-1/supplier/src/test/**/target/
 

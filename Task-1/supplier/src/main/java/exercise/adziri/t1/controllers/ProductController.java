@@ -1,7 +1,7 @@
 package exercise.adziri.t1.controllers;
 
 import exercise.adziri.t1.models.Product;
-import exercise.adziri.t1.repositories.ProductRepository;
+import exercise.adziri.t1.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,32 +11,30 @@ import java.util.List;
 @RequestMapping("api/v1/products")
 @RequiredArgsConstructor
 public class ProductController {
-    private final ProductRepository productRepository;
+    private final ProductService productService;
 
     @PostMapping
     public Product save(@RequestBody Product product) {
-        return productRepository.save(product);
+        return productService.save(product);
     }
 
     @GetMapping
     public List<Product> getAll() {
-        return productRepository.findAll();
+        return productService.getAll();
     }
 
     @GetMapping("/{id}")
     public Product getById(@PathVariable Long id) {
-        return productRepository.findById(id).orElseThrow(() ->
-                new RuntimeException("Продукта с таким id не существует"));
+        return productService.getById(id);
     }
 
     @PutMapping("/{id}")
     public Product update(@PathVariable Long id, @RequestBody Product product) {
-        product.setId(id);
-        return productRepository.save(product);
+        return productService.update(id, product);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        productRepository.deleteById(id);
+        productService.deleteById(id);
     }
 }
