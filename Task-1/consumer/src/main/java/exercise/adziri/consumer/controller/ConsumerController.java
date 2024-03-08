@@ -30,8 +30,8 @@ public class ConsumerController {
     @GetMapping("/info")
     public ProductAndCategory getProductAndCategory() {
         var prodAndCategoryDto = new ProductAndCategory();
-        prodAndCategoryDto.setCategory(List.of(Objects.requireNonNull(restTemplate.getForObject(url + "/categories", Category[].class))));
         prodAndCategoryDto.setProduct(List.of(Objects.requireNonNull(restTemplate.getForObject(url + "/products", Product[].class))));
+        prodAndCategoryDto.setCategory(List.of(Objects.requireNonNull(restTemplate.getForObject(url + "/categories", Category[].class))));
         return prodAndCategoryDto;
     }
 
@@ -66,7 +66,7 @@ public class ConsumerController {
     }
 
     @GetMapping("/products/filtered")
-    public ResponseEntity<List<Product>> filteredByPrice(
+    public ResponseEntity<List<Product>> filteredByParam(
             @RequestParam(required = false) String nameSort,
             @RequestParam(required = false) String priceSort,
             @RequestParam(required = false, defaultValue = "") String name,
