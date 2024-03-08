@@ -1,4 +1,4 @@
-package exercise.adziri.consumer.controllers;
+package exercise.adziri.consumer.controller;
 
 import exercise.adziri.consumer.dto.Category;
 import exercise.adziri.consumer.dto.Product;
@@ -6,14 +6,15 @@ import exercise.adziri.consumer.dto.ProductAndCategory;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -37,7 +38,7 @@ public class ConsumerController {
 
     @PostMapping("/products")
     public ResponseEntity<Product> createProduct(@RequestBody @Valid  Product product) {
-        if (product.getCategory().getId() == null)
+        if (product.getCategory() != null)
             product.setCategory(restTemplate.postForObject(url + "/categories", product.getCategory(), Category.class));
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
@@ -118,4 +119,6 @@ public class ConsumerController {
         }
         return sorted;
     }
+
+
 }

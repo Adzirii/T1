@@ -11,12 +11,12 @@ import lombok.Setter;
 public class Product {
     @Null
     private Long id;
-    @NotBlank(message = "Имя не может быть пустыи")
+    @NotBlank(message = "Продукт обязан иметь имя")
     private String name;
-    @NotBlank(message = "Описание не может быть пустым")
+    @NotBlank(message = "Продукт обязан иметь описание")
     private String description;
-    @NotNull(message = "Цена не может быть отрицательной")
-    @DecimalMin(value = "0")
+    @NotNull
+    @DecimalMin(value = "0", message = "Продукт обязан иметь положительную цену")
     @DecimalMax(value = "999999")
     private Double price;
     @Valid

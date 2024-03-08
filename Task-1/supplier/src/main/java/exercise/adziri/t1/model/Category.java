@@ -1,4 +1,4 @@
-package exercise.adziri.t1.models;
+package exercise.adziri.t1.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

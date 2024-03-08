@@ -1,6 +1,6 @@
-package exercise.adziri.t1.controllers;
+package exercise.adziri.t1.controller;
 
-import exercise.adziri.t1.models.Category;
+import exercise.adziri.t1.model.Category;
 import exercise.adziri.t1.services.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

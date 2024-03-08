@@ -1,7 +1,7 @@
 package exercise.adziri.t1.services;
 
-import exercise.adziri.t1.models.Category;
-import exercise.adziri.t1.repositories.CategoryRepository;
+import exercise.adziri.t1.model.Category;
+import exercise.adziri.t1.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +12,9 @@ import java.util.List;
 public class CategoryService {
     private final CategoryRepository categoryRepository;
 
-    public Category save(Category category){
-        return categoryRepository.save(category);
+    public Category save(Category categoryForm){
+        var category = categoryRepository.findByName(categoryForm.getName());
+        return category.orElse(categoryRepository.save(categoryForm));
     }
 
     public List<Category> getAll() {

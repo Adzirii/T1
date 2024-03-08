@@ -1,7 +1,7 @@
 package exercise.adziri.t1.services;
 
-import exercise.adziri.t1.models.Product;
-import exercise.adziri.t1.repositories.ProductRepository;
+import exercise.adziri.t1.model.Product;
+import exercise.adziri.t1.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

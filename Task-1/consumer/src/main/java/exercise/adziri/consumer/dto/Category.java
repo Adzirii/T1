@@ -1,5 +1,6 @@
 package exercise.adziri.consumer.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import lombok.Setter;
 public class Category {
     @Null
     private Long id;
-    @NotNull
+    @NotBlank(message = "Категория обязана иметь имя")
     private String name;
 }
 

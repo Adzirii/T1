@@ -1,6 +1,6 @@
-package exercise.adziri.t1.repositories;
+package exercise.adziri.t1.repository;
 
-import exercise.adziri.t1.models.Category;
+import exercise.adziri.t1.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
