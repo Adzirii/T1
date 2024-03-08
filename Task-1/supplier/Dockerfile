@@ -1,22 +1,12 @@
-FROM eclipse-temurin:21-alpine as base
-
+FROM maven:3.8.4-openjdk-17-slim AS build
 
 WORKDIR /app
-
-COPY .mvn/ .mvn
-COPY /mvnw ./pom.xml ./
-RUN ../mvnw dependency:resolve
-
-COPY src ./src
-
-CMD ["./mvnw", "spring-boot:run", "-Dspring-boot.run.profiles=postgresql", "-Dspring-boot.run.jvmArguments='-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000'"]
-
-
-FROM base as builder
-
-RUN ./mvnw clean package -Dmaven.test.skip
+COPY supplier/pom.xml .
+RUN mvn dependency:resolve
+COPY supplier/src ./src
+RUN mvn package -DskipTests
 
 FROM eclipse-temurin:21-alpine
-EXPOSE 8080
-COPY --from=builder /app/target/T1-0.0.1-SNAPSHOT.jar /supplier.jar
-CMD ["java", "-jar", "/supplier.jar"]
+WORKDIR /app
+COPY --from=build /app/target/*.jar ./supplier.jar
+CMD ["java", "-jar", "supplier.jar"]
