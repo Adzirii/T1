@@ -5,6 +5,7 @@ import exercise.adziri.t1.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.http.HttpRequest;
 import java.util.List;
 
 @RestController
@@ -12,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
+
 
     @PostMapping
     public Product save(@RequestBody Product product) {

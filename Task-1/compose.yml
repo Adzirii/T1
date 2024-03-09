@@ -22,7 +22,7 @@ services:
     depends_on:
       - supplier
     environment:
-      - SUPPLIER_URL=http://localhost:8080/api/v1/
+      - SUPPLIER_URL=http://task-1-supplier-1:8080/api/v1/
 
 
 

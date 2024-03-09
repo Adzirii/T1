@@ -26,7 +26,6 @@ public class ConsumerController {
 
     private final RestTemplate restTemplate;
 
-
     @GetMapping("/info")
     public ProductAndCategory getProductAndCategory() {
         var prodAndCategoryDto = new ProductAndCategory();
@@ -54,6 +53,8 @@ public class ConsumerController {
 
     @PutMapping("/products/{id}")
     public ResponseEntity<String> updateProduct(@PathVariable Long id, @RequestBody Product product) {
+        if (product.getCategory() != null)
+            product.setCategory(restTemplate.postForObject(url + "/categories", product.getCategory(), Category.class));
         restTemplate.put(url + "/products/" + id, product);
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
